@@ -1,30 +1,31 @@
-import random
-from colorama import Fore, Style
 import sys
-import pyfiglet
-
-from charactaire import Charactaire
-
-char = Charactaire()
-
+import random
+from time import sleep
+from pystyle import Write, Colors, Colorate
 
 def init_msg():
-    ASCII_art_1 = pyfiglet.figlet_format("HermesCodeLoc", font='slant')
-    print(Fore.RED, ASCII_art_1)
-    menu()
-
-
+  banner = """
+┏┓╋┏┓╋╋╋╋╋╋╋╋╋╋╋╋╋╋┏━━━┓╋╋╋╋┏┓╋╋╋┏┓╋╋╋╋╋╋╋╋┏┓
+┃┃╋┃┃╋╋╋╋╋╋╋╋╋╋╋╋╋╋┃┏━┓┃╋╋╋╋┃┃╋╋╋┃┃╋╋╋╋╋╋╋╋┃┃
+┃┗━┛┣━━┳━┳┓┏┳━━┳━━┓┃┃╋┗╋━━┳━┛┣━━┓┃┃╋╋┏━━┳━━┫┃┏┓
+┃┏━┓┃┃━┫┏┫┗┛┃┃━┫━━┫┃┃╋┏┫┏┓┃┏┓┃┃━┫┃┃╋┏┫┏┓┃┏━┫┗┛┛
+┃┃╋┃┃┃━┫┃┃┃┃┃┃━╋━━┃┃┗━┛┃┗┛┃┗┛┃┃━┫┃┗━┛┃┗┛┃┗━┫┏┓┓
+┗┛╋┗┻━━┻┛┗┻┻┻━━┻━━┛┗━━━┻━━┻━━┻━━┛┗━━━┻━━┻━━┻┛┗┛
+  """
+  print(Colorate.Horizontal(Colors.blue_to_green, banner, 1))
+  menu()
+  
 def menu():
     g = True
     while g:
         global choice
-        print(" 1: facile  (charactaire minuscule uniquement\n",
-              "2: normale (charactaire minuscule et majuscule avec des chifre\n",
-              "3: robuste (charactaire minuscule et majuscule spéciale avec des chifre)\n")
+        print("1: Faible  (carctères minuscules uniquement)\n",
+              "2: Normal (caractères minuscules, majuscules avec des chiffres)\n",
+              "3: Robuste (carctèress minuscules, majuscules avec des chiffres)\n")
         try:
-            choice = int(input("Qu'elle et votre choix : "))
+            choice = int(input("Votre choix : "))
         except ValueError:
-            print("\nERREUR : les chifre sont uniquement autoriser \n")
+            print("\nERREUR : Les chiffres sont uniquement autorisés \n")
             menu()
 
         if choice == 1:
@@ -40,12 +41,11 @@ def menu():
                     generate_password(3)
                 else:
                     g = False
-                    print("ERREUR : choix inconue \n")
+                    print("ERREUR : Veuillez choisir une des options proposées\n")
                     menu()
 
-
 def generate_password(c):
-    nbr_char = int(input("Combient de charactaire vouler vous dans votre mots de passe : "))
+    nbr_char = int(input("\nCombien de caractères voulez-vous dans votre mot-de-passe : "))
     _pass = ""
     for i in range(nbr_char):
         if c == 1:
@@ -55,34 +55,41 @@ def generate_password(c):
         if c == 3:
             _pass += random.choice(char.ltr + char.majLtr + char.nbr + char.special_ltr + char.special_ltr)
 
-    print("Voici votre mots de pass =>", _pass)
+    print("\nVoici votre mot-de-passe =>", _pass)
     restart()
-
 
 def restart():
     global _restart
     i = True
     while i:
         try:
-            _restart = str(input("Souhaiter vous generer un nouveux mots de pass. Y/N : "))
+            _restart = str(input("\nSouhaitez-vous génerer un nouveu mot-de-passe ? Y/N : "))
             i = False
         except ValueError:
-            print("Velier repondre par Y si oui ou par N si non")
+            print("\nY = Yes / N = No")
 
     f = True
     while f:
         if _restart == str("Y") or _restart == str("y"):
             f = False
-            init_msg()
+            menu()
         else:
             if _restart == str("N") or _restart == str("n"):
                 f = False
                 sys.exit()
             else:
                 f = False
-                print("ERREUR choix inconue")
+                print("\nERREUR choix inconnu")
                 restart()
 
+class Charactaire:
+  def __init__(self):
+    self.nbr = "1234567890"
+    self.ltr = "abcdefghijklmnopqrstuvwxyz"
+    self.majLtr = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    self.special_ltr = "!?,.:#@$£€&%*+=~'-_|^°µ§¨^<[(/{¤}}\)]>"
+  
+char = Charactaire()
 
 if __name__ == "__main__":
     init_msg()
