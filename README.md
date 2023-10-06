@@ -16,8 +16,10 @@ Bibliothèques Python à installer :
 
 ## Documentation
 
-```
-python main.py
+```bash
+> git clone https://github.com/GaetanSorbier/HermesCodeLock.git
+> cd HermesCodeLock
+> python main.py
 ```
 
 ## Mises à Jour Prévues :
