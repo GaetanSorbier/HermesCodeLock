@@ -1,27 +1,31 @@
 # Hermes Code Lock
 
-Hermes Code Lock est un générateur de mots de passe en Python. Hermes est le messager des dieux grecs, réputé pour la sécurité de ses communications. Il vous recommandera un mot de passe robuste selon vos critères pour empêcher tout monstre ou démon malveillant de s'introduire dans vos espaces personnels.
+Hermes Code Lock est un générateur de mots de passe développé en langage Python par Wassim Maleh courrant Octobre 2023, ceci est un fork du script Hermes, mis-à_jour par Gaetan Sorbier .<br>
+Hermes est le messager des dieux grecs, réputé pour la sécurité de ses communications. <br>
+Il vous recommandera un mot de passe robuste selon vos critères pour empêcher tout démon malveillant de s'introduire dans vos espaces personnels.
 
+![Image](https://zupimages.net/up/23/40/z16i.png)
+        
 ## Installation
 
 Bibliothèques Python à installer :
 ```bash
-pip install colorama
-pip install pyfiglet
+> pip install colorama
+> pip install pyfiglet
 ```
 
 ## Documentation
 
-Important : La commande doit être exécutée dans le répertoire du logiciel.
-```bash
-./main.py
+```
+python main.py
 ```
 
-## Futures Mises à Jour
+## Mises à Jour Prévues :
 
 - Interface graphique
 - Système de sauvegarde
 
-## Auteur
+## Auteur(s)
 
-- [@Wassim-maleh](https://github.com/Wassim-Maleh)
+- [Wassim Maleh](https://github.com/Wassim-Maleh)
+- [Gaetan Sorbier](https://github.com/GaetanSorbier) *[FORK]*
